@@ -8,10 +8,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-/**
- *
- * @author marcin.bohm
- */
 public class Studs {
     public static void studs(){
         JSONParser parser = new JSONParser();
@@ -42,9 +38,7 @@ public class Studs {
         }
         } catch(FileNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
     }
