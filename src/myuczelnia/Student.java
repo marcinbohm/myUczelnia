@@ -44,7 +44,7 @@ public class Student {
         for(int i=0;i<oceny.length;i++){
             srednia += oceny[i];
         }
-        srednia = srednia/5;
+        srednia = srednia/oceny.length;
         return srednia;
     }
     public boolean zaliczonaSesja(){
