@@ -57,10 +57,6 @@ public class Student {
     }
     public boolean stypendium(){
         double sredniaOcen = sredniaOcen();
-        if(sredniaOcen>4.5){
-        }else{
-            return false;
-        }
-        return true;
+        return sredniaOcen >= 4.5;
     }
 }
