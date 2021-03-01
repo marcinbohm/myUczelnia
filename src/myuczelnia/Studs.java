@@ -3,20 +3,20 @@ package myuczelnia;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import org.json.simple.*;
-import org.json.simple.parser.*;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 /**
  *
  * @author marcin.bohm
  */
-public class MyUczelnia {
-    public static void main(String[] args) {
-        studs();
-    }
+public class Studs {
     public static void studs(){
         JSONParser parser = new JSONParser();
         try{
-        JSONArray a = (JSONArray) parser.parse(new FileReader("C:\\Users\\marcin.bohm\\Documents\\NetBeansProjects\\MyUczelnia\\src\\myuczelnia\\data.json"));
+        JSONArray a = (JSONArray) parser.parse(new FileReader("Data.json"));
         System.out.println("------");
         for (Object o : a){
           JSONObject student = (JSONObject) o;
