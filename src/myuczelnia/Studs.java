@@ -12,7 +12,7 @@ public class Studs {
     public static void studs(){
         JSONParser parser = new JSONParser();
         try{
-        JSONArray a = (JSONArray) parser.parse(new FileReader("Data.json"));
+        JSONArray a = (JSONArray) parser.parse(new FileReader("data.json"));
         System.out.println("------");
         for (Object o : a){
           JSONObject student = (JSONObject) o;
