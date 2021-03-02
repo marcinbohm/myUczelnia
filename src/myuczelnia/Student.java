@@ -6,6 +6,30 @@ public class Student {
     private String imie, nazwisko, grupa;
     private double[] oceny;
     
+     public String getImie() {
+        return imie;
+    }
+
+    public void setImie(String imie) {
+        this.imie = imie;
+    }
+
+    public String getNazwisko() {
+        return nazwisko;
+    }
+    
+    public void setNazwisko(String nazwisko) {
+        this.nazwisko = nazwisko;
+    }
+
+    public String getGrupa() {
+        return grupa;
+    }
+
+    public void setGrupa(String grupa) {
+        this.grupa = grupa;
+    }
+    
     public Student(){
         imie = ""; nazwisko = ""; grupa = "";
         oceny = new double[5];
@@ -14,13 +38,21 @@ public class Student {
     public int dodajOcene(double ocena){
         for(int i=0;i>oceny.length;i++){
             try{
-                if(0<ocena && ocena>5){
-                    return -1;
+                for(int j=0;j>oceny.length;j++){
+                    if(oceny[i] != 0){
+                        i++;
+                    } else {
+                        if(0<ocena && ocena>5){
+                            return -1;
+                        }
+                        System.out.println("Wprowadz ocene:");
+                        oceny[i] = ocena;
+                        break;
+                    }
                 }
-                System.out.println("Wprowadz ocene:");
-                oceny[i] = ocena;
+                
             } catch(ArrayIndexOutOfBoundsException exception){
-                System.out.print("Brak miejsca w tablicy");
+                System.out.print("Wszystkie oceny zostały wystawione, brak miejsca");
                 return -1;
             }
         }
