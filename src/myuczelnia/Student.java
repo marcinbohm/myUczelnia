@@ -1,6 +1,7 @@
 package myuczelnia;
 
 import java.lang.ArrayIndexOutOfBoundsException;
+import java.util.*;
 
 public class Student {
     private String imie, nazwisko, grupa;

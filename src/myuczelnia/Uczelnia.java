@@ -1,5 +1,5 @@
 package myuczelnia;
-
+import java.util.*;
 import java.lang.ArrayIndexOutOfBoundsException;
 /**
  *
@@ -39,10 +39,42 @@ public class Uczelnia {
         }
     }
     Student[] zaliczyliSesje(){
+        java.util.ArrayList<Student> studenciZaliczajacySesje = new java.util.ArrayList<Student>();
         for(int i=0;i<bazaStudentow.length;i++){
             if(bazaStudentow[i].zaliczonaSesja()==true){
-                //return bazaStudentow[i];
+                studenciZaliczajacySesje.add(bazaStudentow[i]);
             }
         }
+        return studenciZaliczajacySesje.toArray(new Student[studenciZaliczajacySesje.size()]);
+        }
+    
+    Student[] nieZaliczyliSesji(){
+        java.util.ArrayList<Student> studenciNieZaliczajacySesji = new java.util.ArrayList<Student>();
+        for(int i=0;i<bazaStudentow.length;i++){
+            if(bazaStudentow[i].zaliczonaSesja()==false){
+                studenciNieZaliczajacySesji.add(bazaStudentow[i]);
+            }
+        }
+        return studenciNieZaliczajacySesji.toArray(new Student[studenciNieZaliczajacySesji.size()]);
+    }
+    
+    Student[] stypendia(){
+        java.util.ArrayList<Student> studenciZeStypendium = new java.util.ArrayList<Student>();
+        for(int i=0;i<bazaStudentow.length;i++){
+            if(bazaStudentow[i].stypendium()==true){
+                studenciZeStypendium.add(bazaStudentow[i]);
+            }
+        }
+        return studenciZeStypendium.toArray(new Student[studenciZeStypendium.size()]);
+    }
+    
+    Student[] grupa(String idGrupy){
+        java.util.ArrayList<Student> studenciZGrupy = new java.util.ArrayList<Student>();
+        for(int i=0;i<bazaStudentow.length;i++){
+            if(bazaStudentow[i].getGrupa()== idGrupy){
+                studenciZGrupy.add(bazaStudentow[i]);
+            }
+        }
+        return studenciZGrupy.toArray(new Student[studenciZGrupy.size()]);
     }
 }
