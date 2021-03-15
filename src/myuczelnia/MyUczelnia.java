@@ -24,7 +24,8 @@ public class MyUczelnia {
             case 1 -> {
                 System.out.println("Co chcesz zrobić?");
                 System.out.println("1. Nowy student do bazy");
-                System.out.println("2. Wprowadź konkretnemu studentowi oceny");
+                System.out.println("2. Wprowadź oceny konkretnemu studentowi");
+                System.out.println("3. Usuń konkretnego studenta z bazy");
                 switch(sc.nextInt()){
                     case 1 -> {
                         String imie, nazwisko, grupa;
@@ -36,14 +37,19 @@ public class MyUczelnia {
                         nazwisko = sc2.nextLine();
                         System.out.println("Podaj grupę studenta");
                         grupa = sc2.nextLine();
-                        System.out.println("Wpisz oceny");
-                        for(int i=0;i<5;i++){
-                            double n = sc2.nextDouble();
-                            if(n<1 || n>5){
-                                System.out.println("Podano ocenę spoza skali");
-                                i--;
-                            }else{
-                               student.dodajOcene(n);
+                        System.out.println("Czy chcesz wpisać oceny? Wpipsz true lub false");
+                        boolean czyOceny = sc2.nextBoolean();
+                        if(czyOceny){
+                            System.out.println("Ile ocen chcesz wprowadzić");
+                            int ile = sc2.nextInt();
+                            for(int i=0;i<ile;i++){
+                                double n = sc2.nextDouble();
+                                if(n<1 || n>5){
+                                    System.out.println("Podano ocenę spoza skali");
+                                    i--;
+                                }else{
+                                   student.dodajOcene(n);
+                                }
                             }
                         }
                         student.setImie(imie);
@@ -53,7 +59,31 @@ public class MyUczelnia {
                         break;
                     }
                     case 2 -> {
-                       
+                       Scanner sc2 = new Scanner(System.in); 
+                       System.out.println("Wprowadź numer studenta");
+                       int n = sc2.nextInt();
+                       System.out.println("Aktualne oceny studenta: "+Arrays.toString(uczelnia1.bazaStudentow[n].getOceny()));
+                       for(int i=0;i<5;i++){
+                                try{
+                                    double o = sc2.nextDouble();
+                                    if(o<1 || o>5){
+                                        System.out.println("Podano ocenę spoza skali");
+                                        i--;
+                                    }else{
+                                        uczelnia1.bazaStudentow[n].dodajOcene(o);
+                                    }
+                                }catch(java.lang.NullPointerException | ArrayIndexOutOfBoundsException exception){
+                                    System.out.println("Brak miejsca w bazie, uczeń ma wystawione wszystkie oceny");
+                                    System.out.println("Aktualne oceny studenta: "+Arrays.toString(uczelnia1.bazaStudentow[n].getOceny()));
+                                    break;
+                                }
+                            }
+                    }
+                    case 3 -> {
+                        Scanner sc2 = new Scanner(System.in); 
+                        System.out.println("Wprowadź numer studenta");
+                        int n = sc2.nextInt();
+                        uczelnia1.bazaStudentow[n] = null;
                     }
                 }
             }
@@ -69,7 +99,6 @@ public class MyUczelnia {
                                 System.out.println("Imie: "+z.getImie());
                                 System.out.println("Nazwisko:"+z.getNazwisko());
                                 System.out.println("Grupa: "+z.getGrupa());
-                                System.out.println("Oceny: "+Arrays.toString(z.getOceny()));
                             }
                         break;
                     }
@@ -78,6 +107,10 @@ public class MyUczelnia {
                         System.out.println("Wprowadź numer studenta");
                         int n = sc2.nextInt();
                         uczelnia1.odczytajStudenta(n);
+                    }
+                    case 3 -> {
+                        Student[] stypendia = uczelnia1.stypendia();
+                        System.out.println(Arrays.toString(stypendia));
                     }
                 }
             }

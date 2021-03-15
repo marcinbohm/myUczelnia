@@ -47,19 +47,12 @@ public class Student {
     int next = 0;
     
     public int dodajOcene(double ocena){
-        try{
-            if(oceny[next] > 5){
-                return -1;
-            } else {
-                oceny[next] = ocena;
-                next++;
-            }
-                
-        } catch(ArrayIndexOutOfBoundsException exception){
-            System.out.print("Wszystkie oceny zostały wystawione, brak miejsca");
+        if(oceny[next] > 5){
             return -1;
+        } else {
+            oceny[next] = ocena;
+            next++;
         }
-        
         return 1;
     }
     public double odczytajOcene(int nrOceny){

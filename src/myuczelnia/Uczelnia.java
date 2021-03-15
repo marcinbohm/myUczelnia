@@ -74,7 +74,7 @@ public class Uczelnia {
     Student[] stypendia(){
         ArrayList<Student> studenciZeStypendium = new ArrayList<Student>();
         for(int i=0;i<bazaStudentow.length;i++){
-            if(!bazaStudentow[i].stypendium()){
+            if(bazaStudentow[i].stypendium()==true){
                 studenciZeStypendium.add(bazaStudentow[i]);
             }
         }
@@ -84,7 +84,7 @@ public class Uczelnia {
     Student[] grupa(String idGrupy){
         ArrayList<Student> studenciZGrupy = new ArrayList<Student>();
         for(int i=0;i<bazaStudentow.length;i++){
-            if(bazaStudentow[i].getGrupa().equals(idGrupy)){
+            if(bazaStudentow[i].getGrupa()==idGrupy){
                 studenciZGrupy.add(bazaStudentow[i]);
             }
         }
