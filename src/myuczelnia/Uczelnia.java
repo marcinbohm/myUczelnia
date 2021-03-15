@@ -6,6 +6,7 @@ import java.lang.ArrayIndexOutOfBoundsException;
  * @author marcin.bohm
  */
 public class Uczelnia {
+    
     private String nazwaUczelni;
     Student[] bazaStudentow;
     
@@ -16,14 +17,14 @@ public class Uczelnia {
     
     int dodajStudenta(Student student){
         try{
-            for(int i=0;i>bazaStudentow.length;i++){
-                    if(bazaStudentow[i] != null){
-                        i++;
-                    } else {
-                        bazaStudentow[i] = student;
-                        break;
-                    }
+            for(int i=0;i<bazaStudentow.length;i++){
+                if(bazaStudentow[i] != null){
+                    i++;
+                } else {
+                    bazaStudentow[i] = student;
+                    break;
                 }
+            }
         }catch(ArrayIndexOutOfBoundsException exception){
             System.out.println("Brak miejsca w bazie");
             return -1;
@@ -35,23 +36,35 @@ public class Uczelnia {
         if(bazaStudentow[nrStudenta]==null){
             return null;
         }else{
-            return bazaStudentow[nrStudenta];
-        }
+                if (bazaStudentow[nrStudenta] != null) {
+                    System.out.println("-------------------");
+                    System.out.println("Imie: "+bazaStudentow[nrStudenta].getImie());
+                    System.out.println("Nazwisko:"+bazaStudentow[nrStudenta].getNazwisko());
+                    System.out.println("Grupa: "+bazaStudentow[nrStudenta].getGrupa());
+                    System.out.println("Oceny: "+Arrays.toString(bazaStudentow[nrStudenta].getOceny()));
+                    System.out.println("Srednia ocen: "+bazaStudentow[nrStudenta].sredniaOcen());
+                    System.out.println("Czy zdana sesja: "+bazaStudentow[nrStudenta].zaliczonaSesja());
+                    System.out.println("Czy stypendium: "+bazaStudentow[nrStudenta].stypendium());
+                } else {
+                    System.out.println("Brak studenta");
+                }
+            }
+        return bazaStudentow[nrStudenta];
     }
     Student[] zaliczyliSesje(){
-        java.util.ArrayList<Student> studenciZaliczajacySesje = new java.util.ArrayList<Student>();
+        ArrayList<Student> studenciZaliczajacySesje = new ArrayList<Student>();
         for(int i=0;i<bazaStudentow.length;i++){
-            if(bazaStudentow[i].zaliczonaSesja()==true){
+            if(bazaStudentow[i].zaliczonaSesja()){
                 studenciZaliczajacySesje.add(bazaStudentow[i]);
-            }
+            } 
         }
         return studenciZaliczajacySesje.toArray(new Student[studenciZaliczajacySesje.size()]);
         }
     
     Student[] nieZaliczyliSesji(){
-        java.util.ArrayList<Student> studenciNieZaliczajacySesji = new java.util.ArrayList<Student>();
+        ArrayList<Student> studenciNieZaliczajacySesji = new ArrayList<Student>();
         for(int i=0;i<bazaStudentow.length;i++){
-            if(bazaStudentow[i].zaliczonaSesja()==false){
+            if(!bazaStudentow[i].zaliczonaSesja()){
                 studenciNieZaliczajacySesji.add(bazaStudentow[i]);
             }
         }
@@ -59,9 +72,9 @@ public class Uczelnia {
     }
     
     Student[] stypendia(){
-        java.util.ArrayList<Student> studenciZeStypendium = new java.util.ArrayList<Student>();
+        ArrayList<Student> studenciZeStypendium = new ArrayList<Student>();
         for(int i=0;i<bazaStudentow.length;i++){
-            if(bazaStudentow[i].stypendium()==true){
+            if(!bazaStudentow[i].stypendium()){
                 studenciZeStypendium.add(bazaStudentow[i]);
             }
         }
@@ -69,9 +82,9 @@ public class Uczelnia {
     }
     
     Student[] grupa(String idGrupy){
-        java.util.ArrayList<Student> studenciZGrupy = new java.util.ArrayList<Student>();
+        ArrayList<Student> studenciZGrupy = new ArrayList<Student>();
         for(int i=0;i<bazaStudentow.length;i++){
-            if(bazaStudentow[i].getGrupa()== idGrupy){
+            if(bazaStudentow[i].getGrupa().equals(idGrupy)){
                 studenciZGrupy.add(bazaStudentow[i]);
             }
         }

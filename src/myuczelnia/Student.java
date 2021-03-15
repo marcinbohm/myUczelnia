@@ -31,33 +31,35 @@ public class Student {
         this.grupa = grupa;
     }
     
+    public double[] getOceny(){
+        return oceny;
+    }
+    
+    public void setOceny(double oceny[]){
+        this.oceny = oceny;
+    }
+    
     public Student(){
         imie = ""; nazwisko = ""; grupa = "";
         oceny = new double[5];
     }
     
+    int next = 0;
+    
     public int dodajOcene(double ocena){
-        for(int i=0;i>oceny.length;i++){
-            try{
-                for(int j=0;j>oceny.length;j++){
-                    if(oceny[i] != 0){
-                        i++;
-                    } else {
-                        if(0<ocena && ocena>5){
-                            return -1;
-                        }
-                        System.out.println("Wprowadz ocene:");
-                        oceny[i] = ocena;
-                        break;
-                    }
-                }
-                
-            } catch(ArrayIndexOutOfBoundsException exception){
-                System.out.print("Wszystkie oceny zostały wystawione, brak miejsca");
+        try{
+            if(oceny[next] > 5){
                 return -1;
+            } else {
+                oceny[next] = ocena;
+                next++;
             }
+                
+        } catch(ArrayIndexOutOfBoundsException exception){
+            System.out.print("Wszystkie oceny zostały wystawione, brak miejsca");
+            return -1;
         }
-        System.out.print("Wprowadzono prawidłowo oceny, wynik funkcji: ");
+        
         return 1;
     }
     public double odczytajOcene(int nrOceny){
@@ -90,6 +92,10 @@ public class Student {
     }
     public boolean stypendium(){
         double sredniaOcen = sredniaOcen();
-        return sredniaOcen >= 4.5;
+        if(sredniaOcen >= 4.5){
+            return true;
+        }else {
+            return false;
+        }
     }
 }

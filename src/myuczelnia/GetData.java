@@ -8,8 +8,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class Studs {
-    public static void studs(){
+public class GetData {
+    public static void getData(){
         JSONParser parser = new JSONParser();
         try{
         JSONArray a = (JSONArray) parser.parse(new FileReader("data.json"));
