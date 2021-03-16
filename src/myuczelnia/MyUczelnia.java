@@ -93,6 +93,10 @@ public class MyUczelnia {
                 System.out.println("Co chcesz zrobić?");
                 System.out.println("1. Lista studentow");
                 System.out.println("2. Odczytaj informacje o konkretnym studencie");
+                System.out.println("3. Lista studentow ze stypendiami");
+                System.out.println("4. Lista studentow, którzy zaliczyli sesję");
+                System.out.println("5. Lista studentow, którzy nie zaliczyli sesji");
+                System.out.println("6. Lista studentow z podanej grupy");
                 switch(sc.nextInt()){
                     case 1 -> {
                         for (Student z : uczelnia1.bazaStudentow) 
