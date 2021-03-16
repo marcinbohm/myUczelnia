@@ -15,12 +15,12 @@ public class Uczelnia {
         bazaStudentow = new Student[500];
     }
     
+    int nrBazaStud = 0;
+    
     int dodajStudenta(Student student){
         try{
             for(int i=0;i<bazaStudentow.length;i++){
-                if(bazaStudentow[i] != null){
-                    i++;
-                } else {
+                if(bazaStudentow[i] == null){
                     bazaStudentow[i] = student;
                     break;
                 }

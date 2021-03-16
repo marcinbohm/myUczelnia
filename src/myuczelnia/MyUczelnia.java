@@ -37,12 +37,13 @@ public class MyUczelnia {
                         nazwisko = sc2.nextLine();
                         System.out.println("Podaj grupę studenta");
                         grupa = sc2.nextLine();
-                        System.out.println("Czy chcesz wpisać oceny? Wpipsz true lub false");
+                        System.out.println("Czy chcesz wpisać oceny? Wpisz true lub false");
                         boolean czyOceny = sc2.nextBoolean();
                         if(czyOceny){
                             System.out.println("Ile ocen chcesz wprowadzić");
                             int ile = sc2.nextInt();
                             for(int i=0;i<ile;i++){
+                                System.out.println("Wprowadź ocenę:");
                                 double n = sc2.nextDouble();
                                 if(n<1 || n>5){
                                     System.out.println("Podano ocenę spoza skali");
@@ -99,13 +100,19 @@ public class MyUczelnia {
                 System.out.println("6. Lista studentow z podanej grupy");
                 switch(sc.nextInt()){
                     case 1 -> {
-                        for (Student z : uczelnia1.bazaStudentow) 
+                        int pozycja = -1;
+                        for (Student z : uczelnia1.bazaStudentow){ 
+                            
+                            pozycja++;
+                            
                             if (z != null) {
                                 System.out.println("-------------------");
+                                System.out.println("Pozycja: "+pozycja);
                                 System.out.println("Imie: "+z.getImie());
                                 System.out.println("Nazwisko:"+z.getNazwisko());
                                 System.out.println("Grupa: "+z.getGrupa());
                             }
+                        }
                         break;
                     }
                     case 2 -> {
