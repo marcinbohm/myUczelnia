@@ -78,12 +78,14 @@ public class MyUczelnia {
                                     break;
                                 }
                             }
+                        break;
                     }
                     case 3 -> {
                         Scanner sc2 = new Scanner(System.in); 
                         System.out.println("Wprowadź numer studenta");
                         int n = sc2.nextInt();
                         uczelnia1.bazaStudentow[n] = null;
+                        break;
                     }
                 }
             }
@@ -107,10 +109,26 @@ public class MyUczelnia {
                         System.out.println("Wprowadź numer studenta");
                         int n = sc2.nextInt();
                         uczelnia1.odczytajStudenta(n);
+                        break;
                     }
                     case 3 -> {
-                        Student[] stypendia = uczelnia1.stypendia();
-                        System.out.println(Arrays.toString(stypendia));
+                        uczelnia1.stypendia();
+                        break;
+                    }
+                    case 4 -> {
+                        uczelnia1.zaliczyliSesje();
+                        break;
+                    }
+                    case 5 -> {
+                        uczelnia1.nieZaliczyliSesji();
+                        break;
+                    }
+                    case 6 ->{
+                        Scanner sc2 = new Scanner(System.in);
+                        System.out.println("Wprowadź numer grupy");
+                        String nr = sc2.nextLine();
+                        uczelnia1.grupa(nr);
+                        break;
                     }
                 }
             }

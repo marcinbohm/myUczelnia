@@ -51,43 +51,72 @@ public class Uczelnia {
             }
         return bazaStudentow[nrStudenta];
     }
+    
+    int numerBazaSesjaZal = 0;
+    
     Student[] zaliczyliSesje(){
-        ArrayList<Student> studenciZaliczajacySesje = new ArrayList<Student>();
-        for(int i=0;i<bazaStudentow.length;i++){
-            if(bazaStudentow[i].zaliczonaSesja()){
-                studenciZaliczajacySesje.add(bazaStudentow[i]);
-            } 
+        Student[] zaliczonaSesja;
+        zaliczonaSesja = new Student[500];
+        for (Student z : bazaStudentow){
+            if (z != null) {
+                if(z.zaliczonaSesja()) {
+                    zaliczonaSesja[numerBazaSesjaZal] = z;
+                    numerBazaSesjaZal++;
+                    System.out.println("Użytkownik " + z.getImie() + " " + z.getNazwisko() + " zaliczył sesję ze średnią ocen: "+z.sredniaOcen());
+                }
+            }
         }
-        return studenciZaliczajacySesje.toArray(new Student[studenciZaliczajacySesje.size()]);
-        }
+        return zaliczonaSesja;
+    }
+
+    int numerBazaSesjaNZal = 0;
     
     Student[] nieZaliczyliSesji(){
-        ArrayList<Student> studenciNieZaliczajacySesji = new ArrayList<Student>();
-        for(int i=0;i<bazaStudentow.length;i++){
-            if(!bazaStudentow[i].zaliczonaSesja()){
-                studenciNieZaliczajacySesji.add(bazaStudentow[i]);
+        Student[] nieZaliczonaSesja;
+        nieZaliczonaSesja = new Student[500];
+        for (Student z : bazaStudentow){
+            if (z != null) {
+                if(!z.zaliczonaSesja()) {
+                    nieZaliczonaSesja[numerBazaSesjaNZal] = z;
+                    numerBazaSesjaNZal++;
+                    System.out.println("Użytkownik " + z.getImie() + " " + z.getNazwisko() + " nie zaliczył sesji ze średnią ocen: "+z.sredniaOcen());
+                }
             }
         }
-        return studenciNieZaliczajacySesji.toArray(new Student[studenciNieZaliczajacySesji.size()]);
+        return nieZaliczonaSesja;
     }
+
+    int numerBazaStyp = 0;
     
     Student[] stypendia(){
-        ArrayList<Student> studenciZeStypendium = new ArrayList<Student>();
-        for(int i=0;i<bazaStudentow.length;i++){
-            if(bazaStudentow[i].stypendium()==true){
-                studenciZeStypendium.add(bazaStudentow[i]);
+        Student[] zeStypendium;
+        zeStypendium = new Student[500];
+        for (Student z : bazaStudentow){
+            if (z != null) {
+                if(z.stypendium()) {
+                    zeStypendium[numerBazaStyp] = z;
+                    numerBazaStyp++;
+                    System.out.println("Użytkownik " + z.getImie() + " " + z.getNazwisko() + " otrzymał stypendium ze średnią ocen: "+z.sredniaOcen());
+                }
             }
         }
-        return studenciZeStypendium.toArray(new Student[studenciZeStypendium.size()]);
+        return zeStypendium;
     }
     
+    int listaGrupy = 0;
+    
     Student[] grupa(String idGrupy){
-        ArrayList<Student> studenciZGrupy = new ArrayList<Student>();
-        for(int i=0;i<bazaStudentow.length;i++){
-            if(bazaStudentow[i].getGrupa()==idGrupy){
-                studenciZGrupy.add(bazaStudentow[i]);
+        Student[] zGrupy;
+        zGrupy = new Student[500];
+        for (Student z : bazaStudentow){
+            if (z != null) {
+                if(z.getGrupa().equals(idGrupy)) {
+                    zGrupy[listaGrupy] = z;
+                    listaGrupy++;
+                    System.out.println("Użytkownik " + z.getImie() + " " + z.getNazwisko() + " Jest członkiem grupy "+idGrupy);
+                }
             }
         }
-        return studenciZGrupy.toArray(new Student[studenciZGrupy.size()]);
+        return zGrupy;
     }
 }
