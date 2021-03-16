@@ -42,22 +42,28 @@ public class MyUczelnia {
                         if(czyOceny){
                             System.out.println("Ile ocen chcesz wprowadzić");
                             int ile = sc2.nextInt();
-                            for(int i=0;i<ile;i++){
-                                System.out.println("Wprowadź ocenę:");
-                                double n = sc2.nextDouble();
-                                if(n<1 || n>5){
-                                    System.out.println("Podano ocenę spoza skali");
-                                    i--;
-                                }else{
-                                   student.dodajOcene(n);
+                            
+                            try{
+                                for(int i=0;i<ile;i++){
+                                    System.out.println("Wprowadź ocenę:");
+                                    double n = sc2.nextDouble();
+                                    if(n<1 || n>5){
+                                        System.out.println("Podano ocenę spoza skali");
+                                        i--;
+                                    }else{
+                                       student.dodajOcene(n);
+                                    }
                                 }
-                            }
+                            }catch(java.lang.NullPointerException | ArrayIndexOutOfBoundsException exception){
+                                    System.out.println("Nie można wprowadzić więcej niż 5 ocen, brak miejsca w bazie, uczeń ma wystawione wszystkie oceny");
+                                    System.out.println("Aktualne oceny studenta: "+Arrays.toString(student.getOceny()));
+                                }
+                            student.setImie(imie);
+                            student.setNazwisko(nazwisko);
+                            student.setGrupa(grupa);
+                            uczelnia1.dodajStudenta(student);
+                            break;
                         }
-                        student.setImie(imie);
-                        student.setNazwisko(nazwisko);
-                        student.setGrupa(grupa);
-                        uczelnia1.dodajStudenta(student);
-                        break;
                     }
                     case 2 -> {
                        Scanner sc2 = new Scanner(System.in); 
