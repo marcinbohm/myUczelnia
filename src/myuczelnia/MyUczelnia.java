@@ -1,6 +1,5 @@
 package myuczelnia;
 
-import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.*;
 import java.io.FileNotFoundException;
@@ -10,7 +9,7 @@ import java.io.FileNotFoundException;
  * @author marcin.bohm
  */
 public class MyUczelnia {
-    public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
         boolean run = true;
         Student student;
         Uczelnia uczelnia1 = new Uczelnia();
@@ -63,6 +62,11 @@ public class MyUczelnia {
                             student.setGrupa(grupa);
                             uczelnia1.dodajStudenta(student);
                             break;
+                        } else {
+                            student.setImie(imie);
+                            student.setNazwisko(nazwisko);
+                            student.setGrupa(grupa);
+                            uczelnia1.dodajStudenta(student);
                         }
                     }
                     case 2 -> {
@@ -70,7 +74,9 @@ public class MyUczelnia {
                        System.out.println("Wprowadź numer studenta");
                        int n = sc2.nextInt();
                        System.out.println("Aktualne oceny studenta: "+Arrays.toString(uczelnia1.bazaStudentow[n].getOceny()));
-                       for(int i=0;i<5;i++){
+                       System.out.println("Ile ocen chcesz wprowadzić");
+                       int ile = sc2.nextInt();
+                       for(int i=0;i<ile;i++){
                                 try{
                                     double o = sc2.nextDouble();
                                     if(o<1 || o>5){
